@@ -40,37 +40,38 @@ func readLine(filename string) {
 	}
 }
 
-func createArray(n int) []int {
-	var a int[10000]
-	for i:=1; i<9627; i++ {
-		a = append(a, i)
-
-
-
-	}
-	return a
+type custNo struct {
+	n int
 }
+
+var a [9630]custNo //宣告空的 int array
 
 func main() {
 	filename := "customer_id.csv"
+
+	fmt.Println(len(a))
+
+	// arr = append(arr, 6)
+
+	// for i := 0; i < 9600; i++ {
+	// 	a = append(a, i+1)
+	// }
+
 	readLine(filename)
+
+	for i := 0; i < len(a); i++ {
+		if a[i].n == 0 {
+			fmt.Println(i)
+		}
+	}
+
 }
 
 func splitOutput(outputStr string) int {
 	// outputStr := string(outs[:])
 	split := strings.Split(outputStr, ",")
 	i, _ := strconv.Atoi(split[0])
-	fmt.Printf("%d\n", i)
+	a[i].n = a[i].n + 1
+	// fmt.Printf("%d\n", i)
 	return i
-	// for index, line := range split {
-	// 	fmt.Printf("Line %d: %s\n", index, line)
-	// 	if len(line) >= 9 && line[0:9] == "Users of " {
-	// 		lineSplit := strings.Split(line, " ")
-	// 		if len(lineSplit) == 16 {
-	// 			name := lineSplit[2]
-	// 			name = name[0 : len(name)-1]
-	// 			fmt.Printf("%s %s %s\n", name, lineSplit[6], lineSplit[12])
-	// 		}
-	// 	}
-	// }
 }
